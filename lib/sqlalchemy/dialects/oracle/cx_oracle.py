@@ -1089,14 +1089,10 @@ class OracleDialect_cx_oracle(OracleDialect):
                     int(x) for x in m.group(1, 2, 3) if x is not None
                 )
         self.cx_oracle_ver = version
-        if self.cx_oracle_ver < (8,) and self.cx_oracle_ver > (0, 0, 0):
-            raise exc.InvalidRequestError(
-                "cx_Oracle version 8 and above are supported"
-            )
 
     @classmethod
     def import_dbapi(cls):
-        import cx_Oracle
+        import oracledb as cx_Oracle
 
         return cx_Oracle
 
